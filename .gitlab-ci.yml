@@ -1,0 +1,9 @@
+stages:
+  - test
+build and test:
+  image: golang:1.16
+  stage: test
+  script:
+    - go build -v ./...
+    - go test -v -cover ./...
+    - go test -benchmem -run=none -bench ^BenchmarkTest$ sol/sol
